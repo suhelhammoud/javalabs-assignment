@@ -1,4 +1,4 @@
-package s0726205.udp;
+package s726205;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
