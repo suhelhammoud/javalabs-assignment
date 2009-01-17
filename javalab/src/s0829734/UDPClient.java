@@ -1,0 +1,34 @@
+package s0829734;
+//UDP CLIENT CODE
+
+import java.io.*;
+import java.net.*;
+public class UDPClient {
+
+	public DatagramSocket sendFile(String fileName, String serverName, int serverPort, int packetSize)
+	throws Exception{
+
+		InetAddress serverIPAddress = InetAddress.getByName(serverName);
+		
+		DatagramSocket clientSocket = new DatagramSocket ();
+		byte[] sendData = new byte[packetSize];
+
+		FileInputStream fin= new FileInputStream(fileName);
+
+
+		char[] arrChar=new char[1024];
+		while( fin.read(sendData) >0){
+		
+			System.out.println(new String(sendData));
+			
+			DatagramPacket sendPacket = new DatagramPacket (sendData, sendData.length, serverIPAddress, serverPort);
+			clientSocket.send(sendPacket);
+		}
+		clientSocket.close();
+		return clientSocket;
+	}
+
+	public static void main(String[] args)throws Exception {
+		new UDPClient().sendFile("d://test.txt", "localhost", 7777, 1024);
+	}
+}
