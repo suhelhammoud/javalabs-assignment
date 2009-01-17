@@ -1,4 +1,4 @@
-package s0728103;
+package s728103;
 import java.io.*;
 import java.net.*;
 

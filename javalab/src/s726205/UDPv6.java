@@ -1,4 +1,4 @@
-package s0726205.udp;
+package s726205;
 import java.io.*;
 import java.net.*;
 import java.util.*;

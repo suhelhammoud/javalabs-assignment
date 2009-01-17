@@ -1,5 +1,5 @@
-package s0728103;
-package 
+package s728103;
+
 
 /**
  *
@@ -19,11 +19,11 @@ import java.util.logging.Logger;
  *
  * @author  chaitanya
  */
-public class s extends javax.swing.JFrame {
+public class server extends javax.swing.JFrame {
    String s;
    DatagramSocket ser;
     /** Creates new form server */
-    public s() {
+    public server() {
         initComponents();
     }
 

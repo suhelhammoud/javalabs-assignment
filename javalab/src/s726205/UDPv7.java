@@ -1,8 +1,7 @@
-package s0726205.udp;
+package s726205;
 import java.io.*;
 import java.net.*;
 import java.util.*;
-import javax.swing.BorderFactory;
 import java.text.*;
 
 //import com.cloudgarden.layout.AnchorLayout;
@@ -36,7 +35,7 @@ import javax.swing.SwingUtilities;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class UDPv10 extends javax.swing.JFrame implements Runnable{
+public class UDPv7 extends javax.swing.JFrame implements Runnable{
 	private JTabbedPane tab;
 	private JPanel client;
 	private JButton StopServer;
@@ -77,14 +76,14 @@ public class UDPv10 extends javax.swing.JFrame implements Runnable{
 	public static void main(String[] args)  {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				UDPv10 inst = new UDPv10();
+				UDPv7 inst = new UDPv7();
 				inst.setLocationRelativeTo(null);
 				inst.setVisible(true);
 			}
 		});
 	}
 	
-	public UDPv10() {
+	public UDPv7() {
 		super();
 		initGUI();
 	}
@@ -172,7 +171,7 @@ public class UDPv10 extends javax.swing.JFrame implements Runnable{
 						ServerDisplay = new JTextArea();
 						ServerDisplay.setText("Server is off!");
 						server.add(ServerDisplay);
-						ServerDisplay.setBounds(25, 176, 740, 393);
+						ServerDisplay.setBounds(25, 176, 754, 410);
 					}
 				}
 				{
