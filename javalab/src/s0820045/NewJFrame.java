@@ -27,17 +27,17 @@ import javax.swing.SwingUtilities;
 
 
 /**
-* This code was edited or generated using CloudGarden's Jigloo
-* SWT/Swing GUI Builder, which is free for non-commercial
-* use. If Jigloo is being used commercially (ie, by a corporation,
-* company or business for any purpose whatever) then you
-* should purchase a license for each developer using Jigloo.
-* Please visit www.cloudgarden.com for details.
-* Use of Jigloo implies acceptance of these licensing terms.
-* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
-* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
-* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
-*/
+ * This code was edited or generated using CloudGarden's Jigloo
+ * SWT/Swing GUI Builder, which is free for non-commercial
+ * use. If Jigloo is being used commercially (ie, by a corporation,
+ * company or business for any purpose whatever) then you
+ * should purchase a license for each developer using Jigloo.
+ * Please visit www.cloudgarden.com for details.
+ * Use of Jigloo implies acceptance of these licensing terms.
+ * A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
+ * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
+ * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
+ */
 public class NewJFrame extends javax.swing.JFrame {
 	private JLabel label_file;
 	private JLabel label_size;
@@ -68,8 +68,8 @@ public class NewJFrame extends javax.swing.JFrame {
 	long transferTime;
 
 	/**
-	* Auto-generated main method to display this JFrame
-	*/
+	 * Auto-generated main method to display this JFrame
+	 */
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -79,12 +79,12 @@ public class NewJFrame extends javax.swing.JFrame {
 			}
 		});
 	}
-	
+
 	public NewJFrame() {
 		super();
 		initGUI();
 	}
-	
+
 	private void initGUI() {
 		try {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -140,7 +140,7 @@ public class NewJFrame extends javax.swing.JFrame {
 				label_start.setText("Start time         :");
 				label_start.setBounds(242, 32, 96, 20);
 			}
-			
+
 			{
 				label_end = new JLabel();
 				getContentPane().add(label_end);
@@ -249,9 +249,9 @@ public class NewJFrame extends javax.swing.JFrame {
 			e.printStackTrace();
 		}
 	}
-	
+
 	String file = null;
-	
+
 	void chooseFile ()
 	{
 		{
@@ -261,77 +261,77 @@ public class NewJFrame extends javax.swing.JFrame {
 			label_file.setText(file);
 			area.append("File to transfer: "+ file);
 			//TODO add some code to make sure that filename is set by the chooser		
+		}
+
 	}
-	
-	}
-	
+
 	public void SendRequest()
 	{		
 
-			
-			
-			
-			area.append("\nStart transferring file "+ file + "........");
-			try{
-				
-				// Start time here !!
-				startTime = System.currentTimeMillis();
-				label_startTime.setText("" + startTime);
-				
-				// Get server address
-				String serverName = txt_serverIp.getText();
-				InetAddress serverIPaddress = InetAddress.getByName(serverName);
-				
-				// Get server port
-				String port_input = txt_port.getText();
-				int port = Integer.parseInt(port_input);
-				
-				//Get packet size
-				String size = txt_size.getText();
-				int packetSize = Integer.parseInt(size);
-				
-				// Create socket
-				DatagramSocket clientSocket = new DatagramSocket ();
-				
-				// Open file
-				byte [] sendData = new byte [packetSize];
-				File fileName = new File (file);
-				FileInputStream inFile = new FileInputStream (fileName);
-				inFile.read (sendData);
-				
-		
-				// Construct and send datagram
-				DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, serverIPaddress, port); 
-				clientSocket.send(sendPacket);
-				
-				// Receive datagram
-				byte [] receiveData = new byte [packetSize];
-				DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
-				clientSocket.receive(receivePacket);
-				
-				//Print output 
-				String sentenceFromServer = new String(receivePacket.getData());
-				area.append("\nReceived from server: " + sentenceFromServer + "\n"); 
-				
-				// End time here !!
-				endTime = System.currentTimeMillis();
-				label_endTime.setText("" + endTime);
-				transferTime= endTime - startTime;
-				label_transferTime.setText(""+transferTime);
-				
-				long fileLength=new File(file).length();
-				double speed=((double) fileLength/1000)/((double)transferTime/1000);
-				label_speed.setText(""+ speed);
-				
-				// Close client socket
-				clientSocket.close();
-				
-				
-			}
-			catch(IOException io){}
-			area.append("File transfer finished ");
 
-		
+
+
+		area.append("\nStart transferring file "+ file + "........");
+		try{
+
+			// Start time here !!
+			startTime = System.currentTimeMillis();
+			label_startTime.setText("" + startTime);
+
+			// Get server address
+			String serverName = txt_serverIp.getText();
+			InetAddress serverIPaddress = InetAddress.getByName(serverName);
+
+			// Get server port
+			String port_input = txt_port.getText();
+			int port = Integer.parseInt(port_input);
+
+			//Get packet size
+			String size = txt_size.getText();
+			int packetSize = Integer.parseInt(size);
+
+			// Create socket
+			DatagramSocket clientSocket = new DatagramSocket ();
+
+			// Open file
+			byte [] sendData = new byte [packetSize];
+			File fileName = new File (file);
+			FileInputStream inFile = new FileInputStream (fileName);
+			inFile.read (sendData);
+
+
+			// Construct and send datagram
+			DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, serverIPaddress, port); 
+			clientSocket.send(sendPacket);
+
+			// Receive datagram
+			byte [] receiveData = new byte [packetSize];
+			DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+			clientSocket.receive(receivePacket);
+
+			//Print output 
+			String sentenceFromServer = new String(receivePacket.getData());
+			area.append("\nReceived from server: " + sentenceFromServer + "\n"); 
+
+			// End time here !!
+			endTime = System.currentTimeMillis();
+			label_endTime.setText("" + endTime);
+			transferTime= endTime - startTime;
+			label_transferTime.setText(""+transferTime);
+
+			long fileLength=new File(file).length();
+			double speed=((double) fileLength/1000)/((double)transferTime/1000);
+			label_speed.setText(""+ speed);
+
+			// Close client socket
+			clientSocket.close();
+
+
+		}
+		catch(IOException io){}
+		area.append("File transfer finished ");
+
+
 
 
 	}	
