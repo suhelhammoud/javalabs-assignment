@@ -212,9 +212,9 @@ public class NewJFrameS extends javax.swing.JFrame {
 				
 				String message;
 				serverSocket = new DatagramSocket(serverPort);
-				
+				int counter=0;
 				while(true){
-				
+					area.append("\nloop "+(counter++));
 					//Receive request from client 
 					DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length );
 					serverSocket.receive(receivePacket);
