@@ -23,23 +23,23 @@ import java.net.*;import java.io.*;
 
 
 /**
-* This code was edited or generated using CloudGarden's Jigloo
-* SWT/Swing GUI Builder, which is free for non-commercial
-* use. If Jigloo is being used commercially (ie, by a corporation,
-* company or business for any purpose whatever) then you
-* should purchase a license for each developer using Jigloo.
-* Please visit www.cloudgarden.com for details.
-* Use of Jigloo implies acceptance of these licensing terms.
-* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
-* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
-* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
-*/
+ * This code was edited or generated using CloudGarden's Jigloo
+ * SWT/Swing GUI Builder, which is free for non-commercial
+ * use. If Jigloo is being used commercially (ie, by a corporation,
+ * company or business for any purpose whatever) then you
+ * should purchase a license for each developer using Jigloo.
+ * Please visit www.cloudgarden.com for details.
+ * Use of Jigloo implies acceptance of these licensing terms.
+ * A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
+ * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
+ * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
+ */
 public class Server extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	public DatagramSocket serverSocket;
 	private DatagramSocket socket;
-	
+
 	private JTextField jTextField_SocketIP;
 	private JLabel jLabel_Port;
 	private JTextArea jTextArea;
@@ -62,20 +62,20 @@ public class Server extends JFrame {
 	public Server() {
 		super("Server");
 		initialize();
-		
+
 		try
 		{
-			 socket = new DatagramSocket(1444);
+			socket = new DatagramSocket(1444);
 		}
 		catch(SocketException socketException)
 		{
-		socketException.printStackTrace();
-		System.exit(1);
+			socketException.printStackTrace();
+			System.exit(1);
 		}
-		
-		
-		
-		  
+
+
+
+
 	}    // end server constructor
 
 	/**
@@ -126,7 +126,7 @@ public class Server extends JFrame {
 		}
 		return jContentPane;
 	}
-	
+
 	private JLabel getJLabel1() {
 		if(jLabel1 == null) {
 			jLabel1 = new JLabel();
@@ -135,7 +135,7 @@ public class Server extends JFrame {
 		}
 		return jLabel1;
 	}
-	
+
 	private JTextField getJTextField_SocketIP() {
 		if(jTextField_SocketIP == null) {
 			jTextField_SocketIP = new JTextField();
@@ -143,7 +143,7 @@ public class Server extends JFrame {
 		}
 		return jTextField_SocketIP;
 	}
-	
+
 	private JLabel getJLabel_Port() {
 		if(jLabel_Port == null) {
 			jLabel_Port = new JLabel();
@@ -152,7 +152,7 @@ public class Server extends JFrame {
 		}
 		return jLabel_Port;
 	}
-	
+
 	private JTextField getJTextField_Port() {
 		if(jTextField_Port == null) {
 			jTextField_Port = new JTextField();
@@ -160,7 +160,7 @@ public class Server extends JFrame {
 		}
 		return jTextField_Port;
 	}
-	
+
 	private JButton getJButton_StartListening() {
 		if(jButton_StartListening == null) {
 			jButton_StartListening = new JButton();
@@ -171,14 +171,14 @@ public class Server extends JFrame {
 					System.out.println("jButton_StartListening.actionPerformed, event="+evt);
 					//TODO add your code for jButton_StartListening.actionPerformed
 					StartListening();                                                         // call the  StarListening method
-					
-					
+
+
 				}
 			});
 		}
 		return jButton_StartListening;
 	}
-	
+
 	private JButton getJButtonStopListening() {
 		if(jButtonStopListening == null) {
 			jButtonStopListening = new JButton();
@@ -195,7 +195,7 @@ public class Server extends JFrame {
 		}
 		return jButtonStopListening;
 	}
-	
+
 	private JTextArea getJTextArea() {
 		if(jTextArea == null) {
 			jTextArea = new JTextArea();
@@ -203,13 +203,13 @@ public class Server extends JFrame {
 		}
 		return jTextArea;
 	}
-	
+
 	public void StartListening()
 	{
 		jTextArea.append("UDP server is Starting...\n");
 		jTextArea.append("UDP server starts listening...\n");
 		jTextArea.append("Waiting for packet size packet...\n");
-		
+
 		try
 		{
 			int serverPort = 9876;                                       // use default server port
@@ -232,18 +232,18 @@ public class Server extends JFrame {
 				int port = receivePacket.getPort();                                                      //   get port
 				String portStr = String.valueOf(port);
 				jTextField_Port.setText(portStr);
-				
+
 				String feedback = "response fromserver: Data sent to server";                         // create message fro Client
 				sendData = feedback.getBytes();
-				
+
 				DatagramPacket sendPacket = new DatagramPacket(sendData,sendData.length,clientIP,port);              // construct datagram
-				 serverSocket.send(sendPacket);                                                                   // send packet
+				serverSocket.send(sendPacket);                                                                   // send packet
 			}                                                    // end while
-			
+
 		}                                                           // end try
 		catch(IOException ioException)
 		{
-		ioException.printStackTrace();	
+			ioException.printStackTrace();	
 		}                                                           // end catch
 	}                                                                  // end Start listening method
 
@@ -288,9 +288,9 @@ public class Server extends JFrame {
 
 	public static void main(String[] args)               // main method 
 	{
-	
+
 		new Server().setVisible(true);
-		
+
 	}
 }  //  @jve:decl-index=0:visual-constraint="10,10"
 
